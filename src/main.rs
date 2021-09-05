@@ -16,7 +16,8 @@ const ENEMY_LASER_SPRITE: &str = "laser_b.png";
 const EXPLOSION_SHEET: &str = "explosion_a.png";
 const TIME_STEP: f32 = 1. / 60.;
 const SCALE: f32 = 0.5;
-const MAX_ENEMIES: u32 = 1;
+const MAX_ENEMIES: u32 = 4;
+const MAX_FORMATION_MEMBERS: u32 = 2;
 const PLAYER_RESPAWN_DELAY: f64 = 2.;
 
 // Entity, Component, System, Resource
@@ -42,7 +43,7 @@ impl Default for PlayerState {
     fn default() -> Self {
         Self {
             on: false,
-            last_shot: 0.
+            last_shot: 0.,
         }
     }
 }
