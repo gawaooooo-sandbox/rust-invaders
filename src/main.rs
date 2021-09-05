@@ -118,7 +118,12 @@ fn laser_hit_enemy(
             if let Some(_) = collision {
                 // remove the enemy
                 commands.entity(enemy_entity).despawn();
-                active_enemies.0 -= 1;
+                // NOTE: active_enemies.0 = 0 -> -1 が入ってpanicを起こすことがあるので0より大きいか判定
+                // active_enemies.0 -= 1;
+                // println!("{}", active_enemies.0);
+                if active_enemies.0 > 0 {
+                    active_enemies.0 -= 1;
+                }
 
                 // remove the laser
                 commands.entity(laser_entity).despawn();
